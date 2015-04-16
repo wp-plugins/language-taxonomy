@@ -3,27 +3,27 @@
 Plugin Name: Language Taxonomy
 Plugin URI: http://www.lostfocus.de/language-taxonomy/
 Description: Adds a language taxonomy to posts, pages and other items.
-Version: 0.2.2
+Version: 0.2.3
 Author: Dominik Schwind
 Author URI: http://www.lostfocus.de/
 */
 function create_language_taxonomies() 
 {
 	$labels = array(
-		'name' => _x( 'Languages', 'taxonomy general name' ),
-		'singular_name' => _x( 'Language', 'taxonomy singular name' ),
-		'search_items' =>  __( 'Search Languages' ),
-		'popular_items' => __( 'Popular Languages' ),
-		'all_items' => __( 'All Languages' ),
+		'name' => __( 'Languages', 'language_taxonomy' ),
+		'singular_name' => __( 'Language', 'language_taxonomy' ),
+		'search_items' =>  __( 'Search Languages', 'language_taxonomy' ),
+		'popular_items' => __( 'Popular Languages', 'language_taxonomy' ),
+		'all_items' => __( 'All Languages', 'language_taxonomy' ),
 		'parent_item' => null,
 		'parent_item_colon' => null,
-		'edit_item' => __( 'Edit Language' ), 
-		'update_item' => __( 'Update Language' ),
-		'add_new_item' => __( 'Add New Language' ),
-		'new_item_name' => __( 'New Language' ),
-		'separate_items_with_commas' => __( 'Separate languages with commas' ),
-		'add_or_remove_items' => __( 'Add or remove languages' ),
-		'choose_from_most_used' => __( 'Choose from the most used languages' )
+		'edit_item' => __( 'Edit Language', 'language_taxonomy' ), 
+		'update_item' => __( 'Update Language', 'language_taxonomy' ),
+		'add_new_item' => __( 'Add New Language', 'language_taxonomy' ),
+		'new_item_name' => __( 'New Language', 'language_taxonomy' ),
+		'separate_items_with_commas' => __( 'Separate languages with commas', 'language_taxonomy' ),
+		'add_or_remove_items' => __( 'Add or remove languages', 'language_taxonomy' ),
+		'choose_from_most_used' => __( 'Choose from the most used languages', 'language_taxonomy' )
 		); 
 
 	register_taxonomy('language', array('post','page'), array(
@@ -41,3 +41,10 @@ function lt_the_language($id){
 }
 
 add_action( 'init', 'create_language_taxonomies', 0 );
+
+/* Load textdomain */
+
+add_action('plugins_loaded', 'language_taxonomy_textdomain');
+function language_taxonomy_textdomain() {
+    load_plugin_textdomain('language_taxonomy', false, dirname(plugin_basename( __FILE__ )).'/lang/');
+}
