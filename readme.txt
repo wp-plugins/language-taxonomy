@@ -2,7 +2,7 @@
 Contributors: dominik.schwind
 Tags: language, taxonomy
 Requires at least: 3.0
-Tested up to: 4.2
+Tested up to: 4.3
 Stable tag: 0.2.3
 
 Adds a language taxonomy to posts, pages and other items.
